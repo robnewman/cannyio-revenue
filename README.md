@@ -28,6 +28,7 @@ SLACKBOT_OAUTH_TOKEN=<slack-oauth-token>
 SLACK_CHANNEL=<slack-channel-name>
 TOTAL_COMPANIES=<total-companies-integer>
 REVENUE_FILE=<relative-path-to-arr-file>
+REQUIRED_FIELDS=<comma-separated-list-of-required-fields>
 ```
 
 ## Assumptions
