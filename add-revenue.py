@@ -76,15 +76,14 @@ def check_canny_companies(companies_mrr, canny_companies):
 
     message ="Canny.io Company with naming mismatch to revenue report:\n"
     joined_companies = '\n'.join(missing_companies)
-    if len(missing_companies) > 0:
-        print(message + joined_companies)
 
-        # client = WebClient(token=secrets["SLACKBOT_OAUTH_TOKEN"])
-        # client.chat_postMessage(
-        #     channel = secrets["SLACK_CHANNEL"],
-        #     text = message + joined_companies,
-        #     username = "Bot User"
-        # )
+    if len(missing_companies) > 0:
+        client = WebClient(token=secrets["SLACKBOT_OAUTH_TOKEN"])
+        client.chat_postMessage(
+            channel = secrets["SLACK_CHANNEL"],
+            text = message + joined_companies,
+            username = "Bot User"
+        )
     else:
         print("No Canny Companies missing MRR")
     return 0
