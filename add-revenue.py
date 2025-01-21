@@ -13,7 +13,7 @@ def parse_revenue_report():
     revenue_dict = dict()
     required_fields = secrets["REQUIRED_FIELDS"].split(",")
     try:
-        data = pd.read_excel(secrets["REVENUE_FILE"])
+        data = pd.read_csv(secrets["REVENUE_FILE"])
         missing_fields = [field for field in required_fields if field not in data.columns]
         if missing_fields:
             print(f"Error: The following required fields are missing: {', '.join(missing_fields)}")
@@ -21,9 +21,9 @@ def parse_revenue_report():
         for index, row in data.iterrows():
             rid = row['Company name']
             revenue_dict[rid] = dict()
-            revenue_dict[rid]['totalCustomerArr'] = row['Total Customer ARR']
-            if not math.isnan(row['Total Customer ARR']):
-                revenue_dict[rid]['monthlySpend'] = str(round(row['Total Customer ARR']/12))
+            revenue_dict[rid]['totalCustomerArr'] = row['ARR']
+            if not math.isnan(row['ARR']):
+                revenue_dict[rid]['monthlySpend'] = str(round(row['ARR']/12))
             else:
                 revenue_dict[rid]['monthlySpend'] = float('NaN')
         return(revenue_dict)
