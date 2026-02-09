@@ -159,5 +159,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# revenue files
-/revenue
+# Credentials
+credentials.json
+
+# Apple file system
+.DS_Store
